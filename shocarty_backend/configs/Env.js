@@ -1,0 +1,73 @@
+import { configDotenv } from "dotenv";
+configDotenv();
+
+const requiredEnv = [
+  "PORT",
+  "NODE_ENV",
+  "CROSS_SITE",
+  "FRONTEND_URL",
+  "MONGODB_URL",
+  "MAX_FILE_SIZE",
+  "JWT_ACCESS_SECRET",
+  "JWT_REFRESH_SECRET",
+  "JWT_ACCESS_EXPIRATION",
+  "JWT_REFRESH_EXPIRATION",
+  "CSRF_SECRET",
+  "CLOUDINARY_API_KEY",
+  "CLOUDINARY_API_SECRET",
+  "CLOUDINARY_CLOUD_NAME",
+  "SHOCARTY_PROFILE",
+  "SHOCARTY_PRODUCT",
+  "SHOCARTY_ORDER",
+  "MAIL_HOST",
+  "MAIL_PORT",
+  "MAIL_FROM_NAME",
+  "RAZORPAY_KEY",
+  "RAZORPAY_SECRET",
+  "AUTH_LIMIT_WINDOW",
+  "AUTH_LIMIT_MAX",
+  "NORMAL_WINDOW",
+  "NORMAL_MAX",
+  "SEARCH_WINDOW",
+  "SEARCH_MAX",
+];
+
+requiredEnv.forEach((key) => {
+  if (!process.env[key]) {
+    console.error(`Missing environment variable: ${key}`);
+    process.exit(1);
+  }
+});
+
+export const ENV = Object.freeze({
+  PORT: process.env.PORT,
+  NODE_ENV: process.env.NODE_ENV,
+  CROSS_SITE: process.env.CROSS_SITE,
+  FRONTEND_URL: process.env.FRONTEND_URL,
+  MONGODB_URL: process.env.MONGODB_URL,
+  MAX_FILE_SIZE: process.env.MAX_FILE_SIZE,
+  JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET,
+  JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET,
+  JWT_ACCESS_EXPIRATION: process.env.JWT_ACCESS_EXPIRATION,
+  JWT_REFRESH_EXPIRATION: process.env.JWT_REFRESH_EXPIRATION,
+  CSRF_SECRET: process.env.CSRF_SECRET,
+  CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
+  CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
+  CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
+  SHOCARTY_PROFILE: process.env.SHOCARTY_PROFILE,
+  SHOCARTY_PRODUCT: process.env.SHOCARTY_PRODUCT,
+  SHOCARTY_ORDER: process.env.SHOCARTY_ORDER,
+  MAIL_HOST: process.env.MAIL_HOST,
+  MAIL_PORT: process.env.MAIL_PORT,
+  MAIL_USER: process.env.MAIL_USER,
+  MAIL_PASS: process.env.MAIL_PASS,
+  MAIL_FROM_NAME: process.env.MAIL_FROM_NAME,
+  RAZORPAY_KEY: process.env.RAZORPAY_KEY,
+  RAZORPAY_SECRET: process.env.RAZORPAY_SECRET,
+  AUTH_LIMIT_WINDOW: process.env.AUTH_LIMIT_WINDOW,
+  AUTH_LIMIT_MAX: process.env.AUTH_LIMIT_MAX,
+  NORMAL_WINDOW: process.env.NORMAL_WINDOW,
+  NORMAL_MAX: process.env.NORMAL_MAX,
+  SEARCH_WINDOW: process.env.SEARCH_WINDOW,
+  SEARCH_MAX: process.env.SEARCH_MAX,
+});
