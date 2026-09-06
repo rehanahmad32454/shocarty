@@ -460,11 +460,6 @@ export const logout = async (req, res) => {
     res.clearCookie("accessToken", getAccessTokenCookieOptions());
     res.clearCookie("refreshToken", getRefreshTokenCookieOptions());
     res.clearCookie("csrfToken", csrfCookieOptions());
-    // res.clearCookie("csrfToken", {
-    //   httpOnly: false,
-    //   secure: isProduction,
-    //   sameSite: isProduction ? (isCrossSite ? "none" : "strict") : "lax",
-    // });
     return successResponse(res, {
       message: "Logout successfully",
     });
