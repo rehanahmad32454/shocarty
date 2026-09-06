@@ -453,9 +453,9 @@ export const logout = async (req, res) => {
       token: refreshToken,
     });
     console.log("Auth : logout() : Exceution End");
-    res.clearCookie("refreshToken");
-    res.clearCookie("accessToken");
-    res.clearCookie("csrfToken");
+    res.clearCookie("refreshToken", { path: "/" });
+    res.clearCookie("accessToken", { path: "/" });
+    res.clearCookie("csrfToken", { path: "/" });
     return successResponse(res, {
       message: "Logout successfully",
     });
