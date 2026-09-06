@@ -34,9 +34,6 @@ const {
   ROLE: { ADMIN },
 } = APP_CONFIG;
 
-const isProduction = ENV.NODE_ENV === "production";
-const isCrossSite = ENV.CROSS_SITE === "true";
-
 export const signUp = async (req, res) => {
   try {
     console.log("Auth : signUp() : Exceution Start");
