@@ -12,6 +12,14 @@ export const getRefreshTokenCookieOptions = () => {
   };
 };
 
+export const csrfCookieOptions = () => {
+  return {
+    httpOnly: false,
+    secure: isProduction,
+    sameSite: isProduction ? (isCrossSite ? "none" : "strict") : "lax",
+  };
+};
+
 export const getAccessTokenCookieOptions = () => {
   return {
     httpOnly: true,

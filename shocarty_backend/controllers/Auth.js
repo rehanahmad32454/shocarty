@@ -17,6 +17,7 @@ import {
 import { isValidMongoId } from "../utils/validation/validate.js";
 import jwt from "jsonwebtoken";
 import {
+  csrfCookieOptions,
   getAccessTokenCookieOptions,
   getRefreshTokenCookieOptions,
 } from "../utils/helpers/cookiesOption.js";
@@ -458,11 +459,12 @@ export const logout = async (req, res) => {
     console.log("Auth : logout() : Exceution End");
     res.clearCookie("accessToken", getAccessTokenCookieOptions());
     res.clearCookie("refreshToken", getRefreshTokenCookieOptions());
-    res.clearCookie("csrfToken", {
-      httpOnly: false,
-      secure: isProduction,
-      sameSite: isProduction ? (isCrossSite ? "none" : "strict") : "lax",
-    });
+    res.clearCookie("csrfToken", csrfCookieOptions());
+    // res.clearCookie("csrfToken", {
+    //   httpOnly: false,
+    //   secure: isProduction,
+    //   sameSite: isProduction ? (isCrossSite ? "none" : "strict") : "lax",
+    // });
     return successResponse(res, {
       message: "Logout successfully",
     });
