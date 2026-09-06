@@ -74,6 +74,7 @@ privateAxios.interceptors.response.use(
       }
       try {
         await publicAxios.post("auth/refreshtoken");
+        await initializeCsrf();
         processQueue();
         return privateAxios(originalRequest);
       } catch (err) {
