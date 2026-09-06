@@ -453,9 +453,13 @@ export const logout = async (req, res) => {
       token: refreshToken,
     });
     console.log("Auth : logout() : Exceution End");
-    res.clearCookie("refreshToken", { path: "/" });
-    res.clearCookie("accessToken", { path: "/" });
-    res.clearCookie("csrfToken", { path: "/" });
+    res.clearCookie("accessToken", getAccessTokenCookieOptions());
+    res.clearCookie("refreshToken", getRefreshTokenCookieOptions());
+    res.clearCookie("csrfToken", {
+      httpOnly: false,
+      secure: isProduction,
+      sameSite: isProduction ? (isCrossSite ? "none" : "strict") : "lax",
+    });
     return successResponse(res, {
       message: "Logout successfully",
     });
