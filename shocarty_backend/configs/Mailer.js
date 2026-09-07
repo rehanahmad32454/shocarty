@@ -3,6 +3,14 @@ import { ENV } from "./Env.js";
 
 const { MAIL_FROM_NAME, MAIL_HOST, MAIL_PORT, MAIL_USER, MAIL_PASS } = ENV;
 
+console.log("MAIL_HOST:", MAIL_HOST);
+console.log("MAIL_PORT:", MAIL_PORT);
+console.log("SMTP CONFIG:", {
+  host: MAIL_HOST,
+  port: parseInt(MAIL_PORT),
+  family: 4,
+});
+
 export const transporter = nodemailer.createTransport({
   host: MAIL_HOST,
   port: parseInt(MAIL_PORT),
