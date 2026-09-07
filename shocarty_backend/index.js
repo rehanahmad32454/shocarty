@@ -36,6 +36,8 @@ const { MAX_FILE_SIZE } = FILE_CONFIG;
 const PORT = ENV.PORT || 5000;
 const app = express();
 
+app.set("trust proxy", 1);
+
 if (NODE_ENV === "development") {
   dns.setServers(["1.1.1.1", "8.8.8.8"]);
 }
