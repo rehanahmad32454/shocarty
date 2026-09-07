@@ -5,7 +5,7 @@ const { MAIL_FROM_NAME, MAIL_HOST, MAIL_PORT, MAIL_USER, MAIL_PASS } = ENV;
 
 export const transporter = nodemailer.createTransport({
   host: MAIL_HOST,
-  port: parseInt(MAIL_PORT),
+  // port: parseInt(MAIL_PORT),
   secure: false,
   auth: {
     user: MAIL_USER,
