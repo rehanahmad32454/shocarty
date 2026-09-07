@@ -25,7 +25,7 @@ import Category from "./routes/Category.js";
 import Order from "./routes/Order.js";
 import Cart from "./routes/Cart.js";
 import { ENV } from "./configs/Env.js";
-import dns from "dns";
+import dns from "node:dns"; 
 import { errorMiddleware } from "./middlewares/error.js";
 import helmet from "helmet";
 import { FILE_CONFIG } from "./constants/fileConfig.js";
