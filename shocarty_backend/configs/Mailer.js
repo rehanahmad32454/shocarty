@@ -11,11 +11,19 @@ export const transporter = nodemailer.createTransport({
     user: MAIL_USER,
     pass: MAIL_PASS,
   },
+  family: 4,
   pool: true,
   maxConnections: 5,
   maxMessages: 100,
 });
 
-transporter.verify((error) => {
-  if (error) console.log("...........:", error);
+// transporter.verify((error) => {
+//   if (error) console.log("...........:", error);
+// });
+transporter.verify((error, success) => {
+  if (error) {
+    console.log("SMTP ERROR:", error);
+  } else {
+    console.log("SMTP CONNECTION SUCCESS:", success);
+  }
 });
